@@ -4,19 +4,18 @@
 #
 Name     : R-jqr
 Version  : 1.1.0
-Release  : 3
+Release  : 4
 URL      : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Summary  : Client for 'jq', a 'JSON' Processor
 Group    : Development/Tools
 License  : MIT
 Requires: R-jqr-lib = %{version}-%{release}
-Requires: R-jsonlite
-Requires: R-lazyeval
-Requires: R-rlang
+Requires: R-withr
 BuildRequires : R-jsonlite
 BuildRequires : R-lazyeval
 BuildRequires : R-rlang
+BuildRequires : R-withr
 BuildRequires : buildreq-R
 BuildRequires : jq-dev
 
@@ -46,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1546443348
+export SOURCE_DATE_EPOCH=1552834211
 
 %install
-export SOURCE_DATE_EPOCH=1546443348
+export SOURCE_DATE_EPOCH=1552834211
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -85,8 +84,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library jqr|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  jqr || :
 
 
 %files
@@ -128,10 +126,12 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/jqr/ignore/rivr.R
 /usr/lib64/R/library/jqr/ignore/test-rivr.R
 /usr/lib64/R/library/jqr/jq_version
-/usr/lib64/R/library/jqr/libs/symbols.rds
+/usr/lib64/R/library/jqr/tests/testthat.R
+/usr/lib64/R/library/jqr/tests/testthat/helper-jqr.R
+/usr/lib64/R/library/jqr/tests/testthat/test-dsl.R
+/usr/lib64/R/library/jqr/tests/testthat/test-peek.R
+/usr/lib64/R/library/jqr/tests/testthat/test-spec.R
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/jqr/libs/jqr.so
-/usr/lib64/R/library/jqr/libs/jqr.so.avx2
-/usr/lib64/R/library/jqr/libs/jqr.so.avx512
