@@ -1,7 +1,2 @@
 1.1.0
-R-assertthat
-R-cli
 R-jsonlite
-R-lazyeval
-R-rlang
-R-withr

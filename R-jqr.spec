@@ -4,21 +4,19 @@
 #
 Name     : R-jqr
 Version  : 1.1.0
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Summary  : Client for 'jq', a 'JSON' Processor
 Group    : Development/Tools
 License  : MIT
 Requires: R-jqr-lib = %{version}-%{release}
-Requires: R-assertthat
-Requires: R-cli
-BuildRequires : R-assertthat
-BuildRequires : R-cli
+Requires: R-jsonlite
+Requires: R-lazyeval
+Requires: R-magrittr
 BuildRequires : R-jsonlite
 BuildRequires : R-lazyeval
-BuildRequires : R-rlang
-BuildRequires : R-withr
+BuildRequires : R-magrittr
 BuildRequires : buildreq-R
 BuildRequires : jq-dev
 
@@ -47,13 +45,13 @@ lib components for the R-jqr package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552891132
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569290973
 
 %install
-export SOURCE_DATE_EPOCH=1552891132
+export SOURCE_DATE_EPOCH=1569290973
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -82,12 +80,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  jqr || :
+R CMD check --no-manual --no-examples --no-codoc jqr || :
 
 
 %files
