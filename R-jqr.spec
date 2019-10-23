@@ -4,14 +4,13 @@
 #
 Name     : R-jqr
 Version  : 1.1.0
-Release  : 11
+Release  : 12
 URL      : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Summary  : Client for 'jq', a 'JSON' Processor
 Group    : Development/Tools
 License  : MIT
 Requires: R-jqr-lib = %{version}-%{release}
-Requires: R-jsonlite
 Requires: R-lazyeval
 Requires: R-magrittr
 BuildRequires : R-jsonlite
@@ -19,6 +18,7 @@ BuildRequires : R-lazyeval
 BuildRequires : R-magrittr
 BuildRequires : buildreq-R
 BuildRequires : jq-dev
+BuildRequires : util-linux
 
 %description
 jqr
@@ -46,10 +46,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569290973
+export SOURCE_DATE_EPOCH=1571850106
 
 %install
-export SOURCE_DATE_EPOCH=1569290973
+export SOURCE_DATE_EPOCH=1571850106
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
