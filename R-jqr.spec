@@ -4,7 +4,7 @@
 #
 Name     : R-jqr
 Version  : 1.1.0
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jqr_1.1.0.tar.gz
 Summary  : Client for 'jq', a 'JSON' Processor
