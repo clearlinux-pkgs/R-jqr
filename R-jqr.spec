@@ -4,7 +4,7 @@
 #
 Name     : R-jqr
 Version  : 1.2.2
-Release  : 31
+Release  : 32
 URL      : https://cran.r-project.org/src/contrib/jqr_1.2.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/jqr_1.2.2.tar.gz
 Summary  : Client for 'jq', a 'JSON' Processor
@@ -38,10 +38,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1636477156
+export SOURCE_DATE_EPOCH=1640914069
 
 %install
-export SOURCE_DATE_EPOCH=1636477156
+export SOURCE_DATE_EPOCH=1640914069
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -116,3 +116,5 @@ R CMD check --no-manual --no-examples --no-codoc jqr || :
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/R/library/jqr/libs/jqr.so
+/usr/lib64/R/library/jqr/libs/jqr.so.avx2
+/usr/lib64/R/library/jqr/libs/jqr.so.avx512
